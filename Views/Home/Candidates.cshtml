@@ -1,0 +1,58 @@
+@model municipal_election_web.Models.Municipality
+
+@{
+    ViewData["Title"] = $"{Model.Name} Candidates";
+    
+    // Group the candidates by their Position Name using LINQ
+    var candidatesByPosition = Model.Candidates.GroupBy(c => c.Position.Name);
+}
+
+<div class="mb-4">
+    <a asp-action="Index" class="btn btn-outline-secondary">&larr; Back to Municipalities</a>
+</div>
+
+<div class="text-center mb-5">
+    <h1 class="display-4">Candidates for @Model.Name</h1>
+    <p class="lead">Review the candidates running in the October 17, 2026 election.</p>
+</div>
+
+@foreach (var group in candidatesByPosition)
+{
+    <h2 class="mt-5 mb-3 border-bottom pb-2">@group.Key</h2>
+    
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var candidate in group)
+        {
+            <div class="col">
+                <div class="card h-100 shadow-sm">
+                    <!-- Photo URL handler -->
+                    @if (!string.IsNullOrEmpty(candidate.PhotoUrl))
+                    {
+                        <img src="@candidate.PhotoUrl" class="card-img-top" alt="@candidate.Name" style="height: 250px; object-fit: cover;">
+                    }
+                    else
+                    {
+                        <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 250px;">
+                            <span class="text-muted">No Photo Available</span>
+                        </div>
+                    }
+
+                    <div class="card-body">
+                        <h4 class="card-title">@candidate.Name</h4>
+                        <p class="card-text">@candidate.Biography</p>
+                    </div>
+                    <div class="card-footer bg-white border-top-0">
+                        @if (!string.IsNullOrEmpty(candidate.Website))
+                        {
+                            <a href="@candidate.Website" target="_blank" class="btn btn-sm btn-outline-primary">Website</a>
+                        }
+                        @if (!string.IsNullOrEmpty(candidate.Email))
+                        {
+                            <a href="mailto:@candidate.Email" class="btn btn-sm btn-outline-secondary">Email</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

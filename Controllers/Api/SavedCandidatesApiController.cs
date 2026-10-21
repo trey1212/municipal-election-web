@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using municipal_election_web.Data;
 using municipal_election_web.DTOs;
 using System.Security.Claims;
+using municipal_election_web.Models;
 
 [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
 [Route("api/savedcandidates")]

@@ -1,8 +1,35 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<municipal_election_web.Models.Municipality>
+
+@{
+    ViewData["Title"] = "BC Municipality Browser";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mb-5">
+    <h1 class="display-4">2026 Municipal Elections</h1>
+    <p class="lead">Select your municipality to view candidates and prepare your voting guide.</p>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4">
+    @foreach (var city in Model)
+    {
+        <div class="col">
+            <div class="card h-100 shadow-sm">
+                <div class="card-body text-center">
+                    <!-- Displays the logo if it exists -->
+                    @if (!string.IsNullOrEmpty(city.LogoUrl))
+                    {
+                        <img src="@city.LogoUrl" alt="@city.Name Logo" class="img-fluid mb-3" style="max-height: 100px;" />
+                    }
+                    <h2 class="card-title">@city.Name, @city.Province</h2>
+                    <p class="card-text text-muted">Election Date: @city.ElectionDate.ToString("MMMM dd, yyyy")</p>
+                    <p class="card-text">@city.Description</p>
+                    
+                    <!-- Button linking to the Candidates page for this specific city -->
+                    <a asp-controller="Home" asp-action="Candidates" asp-route-id="@city.MunicipalityId" class="btn btn-primary btn-lg mt-3">
+                        View Candidates
+                    </a>
+                </div>
+            </div>
+        </div>
+    }
 </div>

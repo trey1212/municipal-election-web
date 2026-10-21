@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using municipal_election_web.Models;
 
 namespace municipal_election_web.Data;
 

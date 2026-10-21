@@ -1,5 +1,7 @@
 using System;
 
+namespace municipal_election_web.Models;
+
 public class SavedCandidate
 {
     public int SavedCandidateId { get; set; }

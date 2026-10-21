@@ -1,5 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
+namespace municipal_election_web.Models;
+
 public class Candidate
 {
     public int CandidateId { get; set; }
@@ -11,7 +13,6 @@ public class Candidate
     [MaxLength(300)]
     public string? Biography { get; set; }
 
-    [Url]
     public string? PhotoUrl { get; set; }
 
     [Url]

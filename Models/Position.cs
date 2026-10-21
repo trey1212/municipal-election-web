@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+namespace municipal_election_web.Models;
+
 public class Position
 {
     public int PositionId { get; set; }

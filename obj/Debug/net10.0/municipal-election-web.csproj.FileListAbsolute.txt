@@ -280,3 +280,16 @@ C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-we
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\municipal-election-web.pdb
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\municipal-election-web.genruntimeconfig.cache
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\ref\municipal-election-web.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.Bcl.Cryptography.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\bin\Debug\net10.0\System.IdentityModel.Tokens.Jwt.dll

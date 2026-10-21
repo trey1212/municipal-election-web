@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
+namespace municipal_election_web.Models;
+
 public class Municipality
 {
     public int MunicipalityId { get; set; }

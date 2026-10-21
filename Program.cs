@@ -63,6 +63,13 @@ app.UseAuthorization();
 
 app.MapStaticAssets();
 
+// Areas route
+app.MapControllerRoute(
+    name: "areas",
+    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}")
+    .WithStaticAssets();
+
+// Default route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
@@ -75,8 +82,11 @@ app.MapRazorPages()
 
 using (var scope = app.Services.CreateScope())
 {
+    var serviceProvider = scope.ServiceProvider;
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     db.Database.Migrate();
+
+    await DbInitializer.SeedRolesAndUsersAsync(serviceProvider);
 }
 
 app.Run();
