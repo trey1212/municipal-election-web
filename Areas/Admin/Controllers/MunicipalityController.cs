@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using municipal_election_web.Areas.Admin.Models;
 using municipal_election_web.Data;
 using municipal_election_web.Models;
+using System.Security.Claims;
 
 namespace municipal_election_web.Areas.Admin.Controllers;
 
@@ -13,11 +15,15 @@ public class MunicipalitiesController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly IWebHostEnvironment _environment;
+    private readonly UserManager<IdentityUser> _userManager;
 
-    public MunicipalitiesController(ApplicationDbContext context, IWebHostEnvironment environment)
+    public MunicipalitiesController(ApplicationDbContext context,
+                                    IWebHostEnvironment environment,
+                                    UserManager<IdentityUser> userManager)
     {
         _context = context;
         _environment = environment;
+        _userManager = userManager;
     }
 
     // GET: /Admin/Municipalities
@@ -63,6 +69,16 @@ public class MunicipalitiesController : Controller
             _context.Municipalities.Add(municipality);
             await _context.SaveChangesAsync();
 
+            var adminUsername = model.Name.ToLower().Replace(" ", "");
+            var user = new IdentityUser { UserName = adminUsername };
+            var result = await _userManager.CreateAsync(user, "P@$$w0rd");
+
+            if (result.Succeeded)
+            {
+                await _userManager.AddToRoleAsync(user, "MunicipalityAdmin");
+                await _userManager.AddClaimAsync(user, new Claim("MunicipalityId", municipality.MunicipalityId.ToString()));
+            }
+
             return RedirectToAction(nameof(Index));
         }
         return View(model);
@@ -100,6 +116,8 @@ public class MunicipalitiesController : Controller
             var municipalityToUpdate = await _context.Municipalities.FindAsync(model.MunicipalityId);
             if (municipalityToUpdate == null) return NotFound();
 
+            bool nameChanged = municipalityToUpdate.Name != model.Name;
+
             // 1. Update text properties
             municipalityToUpdate.Name = model.Name;
             municipalityToUpdate.Province = model.Province;
@@ -124,6 +142,20 @@ public class MunicipalitiesController : Controller
 
             _context.Update(municipalityToUpdate);
             await _context.SaveChangesAsync();
+
+            if (nameChanged)
+            {
+                var users = await _userManager.GetUsersForClaimAsync(new Claim("MunicipalityId", municipalityToUpdate.MunicipalityId.ToString()));
+                var adminUser = users.FirstOrDefault();
+
+                if (adminUser != null)
+                {
+                    // Update the existing user's username instead of creating a new one
+                    var newUsername = model.Name.ToLower().Replace(" ", "");
+                    adminUser.UserName = newUsername;
+                    await _userManager.UpdateAsync(adminUser);
+                }
+            }
 
             return RedirectToAction(nameof(Index));
         }
