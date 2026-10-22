@@ -1,0 +1,113 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-2 border-bottom">
+        <div>
+            <h1 class="h2">Administration Portal</h1>
+            <p class="text-muted mb-0">
+                Logged in as
+                @if (ViewBag.IsSuperAdmin)
+                {
+                    <span class="badge bg-danger">Super Admin</span>
+                }
+                else
+                {
+                    <span class="badge bg-primary">Municipality Admin (@ViewBag.MunicipalityName)</span>
+                }
+            </p>
+        </div>
+        <div>
+            <a asp-area="" asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary">
+                &larr; View Public Site
+            </a>
+        </div>
+    </div>
+
+    <!-- Quick Stats Cards -->
+    <div class="row g-4 mb-5">
+        @if (ViewBag.IsSuperAdmin)
+        {
+            <div class="col-md-4">
+                <div class="card shadow-sm border-0 bg-light">
+                    <div class="card-body">
+                        <h6 class="text-muted text-uppercase fw-bold">Total Municipalities</h6>
+                        <h2 class="display-6 fw-bold">@ViewBag.MunicipalityCount</h2>
+                        <a asp-area="Admin" asp-controller="Municipalities" asp-action="Index"
+                           class="btn btn-sm btn-outline-primary mt-2">
+                            Manage Municipalities &rarr;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 bg-light">
+                <div class="card-body">
+                    <h6 class="text-muted text-uppercase fw-bold">
+                        @(ViewBag.IsSuperAdmin ? "Total Candidates" : $"{ViewBag.MunicipalityName} Candidates")
+                    </h6>
+                    <h2 class="display-6 fw-bold">@ViewBag.CandidateCount</h2>
+                    <a asp-area="Admin" asp-controller="Candidates" asp-action="Index"
+                       class="btn btn-sm btn-outline-primary mt-2">
+                        Manage Candidates &rarr;
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 bg-light">
+                <div class="card-body">
+                    <h6 class="text-muted text-uppercase fw-bold">Available Positions</h6>
+                    <h2 class="display-6 fw-bold">@ViewBag.PositionCount</h2>
+                    <span class="text-muted small">Mayor, Councilor, School Trustee</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <h4 class="mb-3">Quick Actions</h4>
+    <div class="row g-3">
+        @if (ViewBag.IsSuperAdmin)
+        {
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Municipalities Management</h5>
+                        <p class="card-text">Create new municipal entries, update existing records, and upload official
+                            logos.</p>
+                            <div class="d-flex gap-2">
+                                <a asp-area="Admin" asp-controller="Municipalities" asp-action="Index"
+                                   class="btn btn-primary">View All</a>
+                                <a asp-area="Admin" asp-controller="Municipalities" asp-action="Create"
+                                   class="btn btn-outline-primary">Add New</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div class="col-md-6">
+                <div class="card h-100 shadow-sm border-success">
+                    <div class="card-body">
+                        <h5 class="card-title text-success">Candidate Roster</h5>
+                        <p class="card-text">
+                            @(ViewBag.IsSuperAdmin
+                                ? "Review and edit candidate profiles across all registered municipalities."
+                                : $"Manage candidates running for election in {ViewBag.MunicipalityName}.")
+                        </p>
+                        <div class="d-flex gap-2">
+                            <a asp-area="Admin" asp-controller="Candidates" asp-action="Index" class="btn btn-success">View
+                                Candidates</a>
+                                <a asp-area="Admin" asp-controller="Candidates" asp-action="Create"
+                                   class="btn btn-outline-success">Add Candidate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>

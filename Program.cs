@@ -64,10 +64,10 @@ app.UseAuthorization();
 app.MapStaticAssets();
 
 // Areas route
-app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
+app.MapAreaControllerRoute(
+    name: "AdminArea",
+    areaName: "Admin",
+    pattern: "Admin/{controller=Dashboard}/{action=Index}/{id?}");
 
 // Default route
 app.MapControllerRoute(
