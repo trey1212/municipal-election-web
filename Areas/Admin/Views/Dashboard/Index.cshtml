@@ -67,10 +67,8 @@
                                     <td>@city.ElectionDate.ToString("MMM dd, yyyy")</td>
                                     <td class="text-end">
                                         <div class="btn-group btn-group-sm">
-                                            <a asp-controller="Municipalities" asp-action="Details"
-                                               asp-route-id="@city.MunicipalityId" class="btn btn-outline-secondary">View</a>
                                             <a asp-controller="Municipalities" asp-action="Edit" asp-route-id="@city.MunicipalityId"
-                                               class="btn btn-outline-primary">Update</a>
+                                               class="btn btn-outline-primary">View / Edit</a>
                                             <a asp-controller="Municipalities" asp-action="Delete"
                                                asp-route-id="@city.MunicipalityId" class="btn btn-outline-danger">Delete</a>
                                         </div>
@@ -126,10 +124,8 @@
                             
                                     <td class="text-end">
                                         <div class="btn-group btn-group-sm">
-                                            <a asp-controller="Candidates" asp-action="Details"
-                                               asp-route-id="@candidate.CandidateId" class="btn btn-outline-secondary">View</a>
                                             <a asp-controller="Candidates" asp-action="Edit" asp-route-id="@candidate.CandidateId"
-                                               class="btn btn-outline-primary">Update</a>
+                                               class="btn btn-outline-primary">View / Edit</a>
                                             <a asp-controller="Candidates" asp-action="Delete" asp-route-id="@candidate.CandidateId"
                                                class="btn btn-outline-danger">Delete</a>
                                         </div>

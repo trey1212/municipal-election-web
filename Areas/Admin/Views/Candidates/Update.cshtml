@@ -1,0 +1,129 @@
+@model municipal_election_web.Areas.Admin.Models.UpdateCandidate
+
+@{
+    ViewData["Title"] = "View / Edit Candidate";
+}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>@Model.Name Details</h2>
+        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">Back to Dashboard</a>
+    </div>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-7">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <input type="hidden" asp-for="CandidateId" />
+                <input type="hidden" asp-for="ExistingPhotoUrl" />
+
+                <div class="mb-3">
+                    <label class="form-label text-muted fw-bold">Current Photo</label>
+                    <div class="mb-3">
+                        @if (!string.IsNullOrEmpty(Model.ExistingPhotoUrl))
+                        {
+                            <img src="@Model.ExistingPhotoUrl" alt="Current Photo" class="img-thumbnail rounded-circle"
+                                 style="height: 150px; width: 150px; object-fit: cover;" />
+                        }
+                        else
+                        {
+                            <div class="bg-light d-flex align-items-center justify-content-center rounded-circle border"
+                                 style="height: 150px; width: 150px;">
+                                <span class="text-muted small">No Photo</span>
+                            </div>
+                        }
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label fw-bold"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PositionId" class="form-label fw-bold">Position</label>
+                    <select asp-for="PositionId" class="form-select" asp-items="ViewBag.Positions"></select>
+                    <span asp-validation-for="PositionId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="MunicipalityId" class="form-label fw-bold">Municipality</label>
+                    <select asp-for="MunicipalityId" class="form-select" asp-items="ViewBag.Municipalities"
+                            disabled="@(User.IsInRole("MunicipalityAdmin") ? "disabled" : null)">
+                    </select>
+                    
+                    @if (User.IsInRole("MunicipalityAdmin"))
+                    {
+                        <!-- Ensures the ID is still submitted since the select is disabled visually -->
+                        <input type="hidden" asp-for="MunicipalityId" />
+                    }
+                    <span asp-validation-for="MunicipalityId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Biography" class="form-label fw-bold"></label>
+                    <textarea asp-for="Biography" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="Biography" class="text-danger"></span>
+                </div>
+
+                <div class="mb-4">
+                    <label asp-for="NewPhotoUpload" class="form-label fw-bold">Upload New Photo (Optional)</label>
+                    <input asp-for="NewPhotoUpload" type="file" class="form-control" accept="image/*" />
+                    <div class="form-text">Leave this blank to keep the current photo.</div>
+                    <span asp-validation-for="NewPhotoUpload" class="text-danger"></span>
+                </div>
+
+                <button type="submit" id="saveBtn" class="btn btn-primary px-4" disabled>Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.querySelector("form");
+            const saveBtn = document.getElementById("saveBtn");
+            
+            // 1. Store the initial values of all form inputs
+            const initialValues = {};
+            const elements = form.querySelectorAll("input, textarea, select");
+            
+            elements.forEach(el => {
+                if (el.name) {
+                    // File inputs are empty on load, otherwise save the text/date value
+                    initialValues[el.name] = el.type === "file" ? "" : el.value;
+                }
+            });
+
+            // 2. Check for changes
+            function checkChanges() {
+                let hasChanged = false;
+                
+                elements.forEach(el => {
+                    if (el.name) {
+                        if (el.type === "file") {
+                            // If a file was selected, a change occurred
+                            if (el.files.length > 0) hasChanged = true;
+                        } else {
+                            // If current text/date doesn't match the original, a change occurred
+                            if (el.value !== initialValues[el.name]) hasChanged = true;
+                        }
+                    }
+                });
+
+                // 3. Enable or disable the button based on changes
+                saveBtn.disabled = !hasChanged;
+            }
+
+            // 4. Attach event listeners to trigger the check whenever the user types or clicks
+            elements.forEach(el => {
+                el.addEventListener("input", checkChanges);
+                el.addEventListener("change", checkChanges);
+            });
+        });
+    </script>
+}

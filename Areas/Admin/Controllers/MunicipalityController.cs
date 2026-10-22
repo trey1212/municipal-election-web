@@ -101,7 +101,7 @@ public class MunicipalitiesController : Controller
             ExistingLogoUrl = municipality.LogoUrl
         };
 
-        return View(model);
+        return View("Update", model);
     }
 
     // POST: /Admin/Municipalities/Edit/5

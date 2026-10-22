@@ -129,7 +129,7 @@ public class CandidatesController : Controller
         };
 
         PopulateDropdowns(model.MunicipalityId, model.PositionId);
-        return View(model);
+        return View("Update", model);
     }
 
     // POST: /Admin/Candidates/Edit/5
