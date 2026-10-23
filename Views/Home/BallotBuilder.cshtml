@@ -1,0 +1,82 @@
+@model IEnumerable<municipal_election_web.Models.Candidate>
+@{
+    ViewData["Title"] = "Ballot Builder";
+}
+
+<div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold text-dark">Ballot Builder</h1>
+        @if (Model.Any())
+        {
+            <button onclick="window.print()" class="btn btn-outline-primary d-print-none">
+                <i class="bi bi-printer"></i> Print Guide
+            </button>
+        }
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="text-center py-5 bg-light rounded border border-0 shadow-sm">
+            <h4 class="text-muted">Your list is currently empty.</h4>
+            <p>Browse the candidate directory to save candidates to your guide.</p>
+            <a asp-controller="Candidates" asp-action="CandidatesBrowser" class="btn btn-primary mt-2">Browse Candidates</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-4">
+            @foreach (var candidate in Model)
+            {
+                <div class="col-md-6 col-lg-4" id="candidate-card-@candidate.CandidateId">
+                    <div class="card h-100 shadow-sm border-0 rounded-3">
+                        <div class="row g-0 h-100">
+                            <div class="col-4">
+                                @if (!string.IsNullOrEmpty(candidate.PhotoUrl))
+                                {
+                                    <img src="@candidate.PhotoUrl" class="img-fluid rounded-start h-100" alt="@candidate.Name" style="object-fit: cover;">
+                                }
+                                else
+                                {
+                                    <div class="bg-secondary h-100 d-flex align-items-center justify-content-center rounded-start">
+                                        <span class="text-white small">No Photo</span>
+                                    </div>
+                                }
+                            </div>
+                            <div class="col-8">
+                                <div class="card-body d-flex flex-column h-100">
+                                    <h5 class="card-title fw-bold mb-1">@candidate.Name</h5>
+                                    <h6 class="card-subtitle mb-2 text-primary">@candidate.Position?.Name</h6>
+                                    <span class="badge bg-dark mb-2 align-self-start">@candidate.Municipality?.Name</span>
+                                    
+                                    <div class="mt-auto d-print-none">
+                                        <button onclick="removeCandidate(@candidate.CandidateId)" class="btn btn-sm btn-outline-danger w-100">
+                                            Remove
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function removeCandidate(id) {
+            fetch(`/Home/ToggleSavedCandidate?candidateId=${id}`, { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.isSaved) {
+                        document.getElementById(`candidate-card-${id}`).remove();
+                        if (document.querySelectorAll('[id^="candidate-card-"]').length === 0) {
+                            location.reload(); // Reload to show the empty state message
+                        }
+                    }
+                })
+                .catch(err => console.error('Error removing candidate:', err));
+        }
+    </script>
+}

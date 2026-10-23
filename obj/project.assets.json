@@ -6721,31 +6721,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\rjtar\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\rjtar\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\rjtar\\Documents\\BCIT\\Term 4\\Comp 4976 - MS Web Dev\\Assignments\\municipal-election-web\\municipal-election-web.csproj",
+      "projectUniqueName": "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\municipal-election-web.csproj",
       "projectName": "municipal-election-web",
-      "projectPath": "C:\\Users\\rjtar\\Documents\\BCIT\\Term 4\\Comp 4976 - MS Web Dev\\Assignments\\municipal-election-web\\municipal-election-web.csproj",
+      "projectPath": "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\municipal-election-web.csproj",
       "packagesPath": "C:\\Users\\rjtar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\rjtar\\Documents\\BCIT\\Term 4\\Comp 4976 - MS Web Dev\\Assignments\\municipal-election-web\\obj\\",
+      "outputPath": "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\rjtar\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\rjtar\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

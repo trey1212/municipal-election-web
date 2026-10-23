@@ -79,7 +79,7 @@ public class MunicipalitiesController : Controller
                 await _userManager.AddClaimAsync(user, new Claim("MunicipalityId", municipality.MunicipalityId.ToString()));
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
         return View(model);
     }
@@ -127,6 +127,12 @@ public class MunicipalitiesController : Controller
             // 2. Check if a NEW logo was uploaded
             if (model.NewLogoUpload != null)
             {
+                if (!string.IsNullOrEmpty(municipalityToUpdate.LogoUrl))
+                {
+                    var oldPath = Path.Combine(_environment.WebRootPath, municipalityToUpdate.LogoUrl.TrimStart('/'));
+                    if (System.IO.File.Exists(oldPath)) System.IO.File.Delete(oldPath);
+                }
+
                 var uploadsFolder = Path.Combine(_environment.WebRootPath, "images");
                 var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(model.NewLogoUpload.FileName);
                 var filePath = Path.Combine(uploadsFolder, uniqueFileName);
@@ -157,8 +163,31 @@ public class MunicipalitiesController : Controller
                 }
             }
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
         return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var municipality = await _context.Municipalities.FindAsync(id);
+        if (municipality == null) return NotFound();
+
+        if (!string.IsNullOrEmpty(municipality.LogoUrl))
+        {
+            var imagePath = Path.Combine(_environment.WebRootPath, municipality.LogoUrl.TrimStart('/'));
+            if (System.IO.File.Exists(imagePath)) System.IO.File.Delete(imagePath);
+        }
+
+        var users = await _userManager.GetUsersForClaimAsync(new Claim("MunicipalityId", municipality.MunicipalityId.ToString()));
+        var adminUser = users.FirstOrDefault();
+        if (adminUser != null) await _userManager.DeleteAsync(adminUser);
+
+        _context.Municipalities.Remove(municipality);
+        await _context.SaveChangesAsync();
+        
+        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
     }
 }

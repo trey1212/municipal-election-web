@@ -40,6 +40,12 @@
                     <div class="card-body">
                         <h4 class="card-title">@candidate.Name</h4>
                         <p class="card-text">@candidate.Biography</p>
+
+                        <div class="mt-3">
+                            <a asp-controller="Home" asp-action="CandidateDetails" asp-route-id="@candidate.CandidateId" class="btn btn-sm btn-primary w-100">
+                                View Full Profile
+                            </a>
+                        </div>
                     </div>
                     <div class="card-footer bg-white border-top-0">
                         @if (!string.IsNullOrEmpty(candidate.Website))

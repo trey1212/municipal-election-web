@@ -38,6 +38,8 @@ builder.Services.AddAuthentication()
         };
     });
 
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 app.UseSwagger();
@@ -57,6 +59,8 @@ else
 
 app.UseHttpsRedirection();
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthentication();
 app.UseAuthorization();

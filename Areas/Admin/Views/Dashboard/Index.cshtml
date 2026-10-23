@@ -69,8 +69,10 @@
                                         <div class="btn-group btn-group-sm">
                                             <a asp-controller="Municipalities" asp-action="Edit" asp-route-id="@city.MunicipalityId"
                                                class="btn btn-outline-primary">View / Edit</a>
-                                            <a asp-controller="Municipalities" asp-action="Delete"
-                                               asp-route-id="@city.MunicipalityId" class="btn btn-outline-danger">Delete</a>
+                                            <form asp-controller="Municipalities" asp-action="Delete" asp-route-id="@city.MunicipalityId" 
+                                             method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete @city.Name?');">
+                                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -126,8 +128,10 @@
                                         <div class="btn-group btn-group-sm">
                                             <a asp-controller="Candidates" asp-action="Edit" asp-route-id="@candidate.CandidateId"
                                                class="btn btn-outline-primary">View / Edit</a>
-                                            <a asp-controller="Candidates" asp-action="Delete" asp-route-id="@candidate.CandidateId"
-                                               class="btn btn-outline-danger">Delete</a>
+                                            <form asp-controller="Candidates" asp-action="Delete" asp-route-id="@candidate.CandidateId" 
+                                             method="post" class="d-inline" onsubmit="return confirm('Are you sure you want to delete @candidate.Name?');">
+                                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>

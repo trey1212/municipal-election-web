@@ -83,7 +83,7 @@ public class CandidatesController : Controller
             _context.Candidates.Add(candidate);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
 
         PopulateDropdowns(model.MunicipalityId, model.PositionId);
@@ -102,7 +102,13 @@ public class CandidatesController : Controller
         }
 
         ViewBag.Municipalities = new SelectList(municipalitiesQuery, "MunicipalityId", "Name", selectedMunicipality);
-        ViewBag.Positions = new SelectList(_context.Positions, "PositionId", "Name", selectedPosition);
+        // Bring the table into memory and filter out duplicate names
+        var uniquePositions = _context.Positions
+            .AsEnumerable()
+            .DistinctBy(p => p.Name)
+            .ToList();
+
+        ViewBag.Positions = new SelectList(uniquePositions, "PositionId", "Name", selectedPosition);
     }
 
     // GET: /Admin/Candidates/Edit/5
@@ -165,6 +171,12 @@ public class CandidatesController : Controller
             // Check if a NEW photo was uploaded
             if (model.NewPhotoUpload != null)
             {
+                if (!string.IsNullOrEmpty(candidateToUpdate.PhotoUrl))
+                {
+                    var oldPath = Path.Combine(_environment.WebRootPath, candidateToUpdate.PhotoUrl.TrimStart('/'));
+                    if (System.IO.File.Exists(oldPath)) System.IO.File.Delete(oldPath);
+                }
+
                 var uploadsFolder = Path.Combine(_environment.WebRootPath, "images", "candidates");
                 var uniqueFileName = Guid.NewGuid().ToString() + Path.GetExtension(model.NewPhotoUpload.FileName);
                 var filePath = Path.Combine(uploadsFolder, uniqueFileName);
@@ -180,10 +192,35 @@ public class CandidatesController : Controller
             _context.Update(candidateToUpdate);
             await _context.SaveChangesAsync();
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
         }
 
         PopulateDropdowns(model.MunicipalityId, model.PositionId);
         return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Delete(int id)
+    {
+        var candidate = await _context.Candidates.FindAsync(id);
+        if (candidate == null) return NotFound();
+
+        // Final security verification
+        if (User.IsInRole("MunicipalityAdmin") && candidate.MunicipalityId != int.Parse(User.FindFirstValue("MunicipalityId")!))
+        {
+            return Forbid();
+        }
+
+        if (!string.IsNullOrEmpty(candidate.PhotoUrl))
+        {
+            var imagePath = Path.Combine(_environment.WebRootPath, candidate.PhotoUrl.TrimStart('/'));
+            if (System.IO.File.Exists(imagePath)) System.IO.File.Delete(imagePath);
+        }
+
+        _context.Candidates.Remove(candidate);
+        await _context.SaveChangesAsync();
+        
+        return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
     }
 }

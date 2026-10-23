@@ -1,0 +1,42 @@
+@model municipal_election_web.Models.Candidate
+@{
+    ViewData["Title"] = Model.Name + " - Details";
+}
+
+<div class="container py-5">
+    <div class="mb-4">
+        <a href="javascript:history.back()" class="btn btn-outline-secondary">&larr; Back</a>
+    </div>
+    
+    <div class="row align-items-start">
+        <div class="col-md-4 mb-4 text-center">
+            @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+            {
+                <img src="@Model.PhotoUrl" alt="@Model.Name" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: cover;" />
+            }
+            else
+            {
+                <div class="bg-light d-flex align-items-center justify-content-center rounded border" style="height: 300px;">
+                    <span class="text-muted">No Photo Available</span>
+                </div>
+            }
+        </div>
+        <div class="col-md-8">
+            <h1 class="fw-bold mb-1">@Model.Name</h1>
+            <h4 class="text-primary mb-2">@Model.Position?.Name</h4>
+            <span class="badge bg-dark fs-6 mb-4">@Model.Municipality?.Name</span>
+            
+            <div class="mb-4">
+                <!-- Updated ID and onclick to use the global function -->
+                <button id="saveBtn-@Model.CandidateId" onclick="toggleGlobalCandidate(@Model.CandidateId, true)" 
+                        class="btn @(ViewBag.IsSaved ? "btn-warning" : "btn-outline-warning") px-4">
+                    <i class="bi @(ViewBag.IsSaved ? "bi-star-fill" : "bi-star")"></i> 
+                    <span>@(ViewBag.IsSaved ? "Saved" : "Save to Guide")</span>
+                </button>
+            </div>
+            
+            <h5 class="fw-bold border-bottom pb-2">Biography</h5>
+            <p class="text-dark" style="white-space: pre-wrap;">@Model.Biography</p>
+        </div>
+    </div>
+</div>
