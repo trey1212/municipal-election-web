@@ -20,35 +20,78 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
+    public async Task<IActionResult> Login(
+        [FromBody] LoginDto loginDto)
     {
-        var user = await _userManager.FindByEmailAsync(loginDto.Email);
-        if (user != null && await _userManager.CheckPasswordAsync(user, loginDto.Password))
+        var user = await _userManager.FindByEmailAsync(
+            loginDto.Email);
+
+        if (user == null)
         {
-            var authClaims = new List<Claim>
-            {
-                new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
-            };
-
-            var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:SecretKey"]));
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                expires: DateTime.Now.AddDays(7), // Token lasts for 7 days
-                claims: authClaims,
-                signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-            );
-
-            return Ok(new
-            {
-                token = new JwtSecurityTokenHandler().WriteToken(token),
-                expiration = token.ValidTo
-            });
+            return Unauthorized();
         }
-        return Unauthorized();
+
+        var passwordIsCorrect =
+            await _userManager.CheckPasswordAsync(
+                user,
+                loginDto.Password);
+
+        if (!passwordIsCorrect)
+        {
+            return Unauthorized();
+        }
+
+        var userClaims = await _userManager.GetClaimsAsync(user);
+
+        var name = userClaims
+            .FirstOrDefault(claim => claim.Type == "fullName")
+            ?.Value ?? "";
+
+        var authClaims = new List<Claim>
+        {
+            new Claim(
+                ClaimTypes.Name,
+                user.UserName ?? ""),
+
+            new Claim(
+                JwtRegisteredClaimNames.Jti,
+                Guid.NewGuid().ToString()),
+
+            new Claim(
+                ClaimTypes.NameIdentifier,
+                user.Id)
+        };
+
+        var secretKey = _configuration["Jwt:SecretKey"];
+
+        if (string.IsNullOrWhiteSpace(secretKey))
+        {
+            return StatusCode(
+                500,
+                "Authentication is not configured.");
+        }
+
+        var authSigningKey = new SymmetricSecurityKey(
+            Encoding.UTF8.GetBytes(secretKey));
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            expires: DateTime.UtcNow.AddDays(7),
+            claims: authClaims,
+            signingCredentials: new SigningCredentials(
+                authSigningKey,
+                SecurityAlgorithms.HmacSha256)
+        );
+
+        return Ok(new
+        {
+            token = new JwtSecurityTokenHandler()
+                .WriteToken(token),
+            expiration = token.ValidTo,
+            name = name,
+            email = user.Email
+        });
     }
 
     [HttpPost("register")]
