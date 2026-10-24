@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/municipal-election-web.csproj": {}
+    "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\municipal-election-web.csproj": {}
   },
   "projects": {
-    "/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/municipal-election-web.csproj": {
+    "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\municipal-election-web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/municipal-election-web.csproj",
+        "projectUniqueName": "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\municipal-election-web.csproj",
         "projectName": "municipal-election-web",
-        "projectPath": "/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/municipal-election-web.csproj",
-        "packagesPath": "/Users/danielsaavedra/.nuget/packages/",
-        "outputPath": "/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/obj/",
+        "projectPath": "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\municipal-election-web.csproj",
+        "packagesPath": "C:\\Users\\rjtar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rjtar\\Documents\\SCHOOL DOCS\\BCIT\\Term 4\\Comp 4976\\municipal-election-web\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/danielsaavedra/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\rjtar\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
@@ -39,7 +39,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.400"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net10.0": {
@@ -103,7 +103,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.401/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
