@@ -20,121 +20,121 @@ build_property.TargetFrameworkVersion = v10.0
 build_property.EntryPointFilePath = 
 build_property.RootNamespace = municipal_election_web
 build_property.RootNamespace = municipal_election_web
-build_property.ProjectDir = C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\
+build_property.ProjectDir = /Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 10.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web
+build_property.MSBuildProjectDirectory = /Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Candidates/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FuZGlkYXRlc1xDcmVhdGUuY3NodG1s
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/Candidates/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQ2FuZGlkYXRlcy9DcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Candidates/Update.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQ2FuZGlkYXRlc1xVcGRhdGUuY3NodG1s
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/Candidates/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvQ2FuZGlkYXRlcy9VcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Dashboard/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvRGFzaGJvYXJkL0luZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Municipalities/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVuaWNpcGFsaXRpZXNcQ3JlYXRlLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/Municipalities/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvTXVuaWNpcGFsaXRpZXMvQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Municipalities/Update.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVuaWNpcGFsaXRpZXNcVXBkYXRlLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/Municipalities/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvTXVuaWNpcGFsaXRpZXMvVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvU2hhcmVkL19BZG1pbkxheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Admin/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvQWRtaW4vVmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Identity/Pages/Account/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Identity/Pages/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Identity/Pages/Account/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9fVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Identity/Pages/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Identity/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Identity/Pages/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Areas/Identity/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Candidates/CandidatesBrowser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2FuZGlkYXRlc1xDYW5kaWRhdGVzQnJvd3Nlci5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Candidates/CandidatesBrowser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FuZGlkYXRlcy9DYW5kaWRhdGVzQnJvd3Nlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Home/BallotBuilder.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxCYWxsb3RCdWlsZGVyLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Home/BallotBuilder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9CYWxsb3RCdWlsZGVyLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Home/CandidateDetails.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYW5kaWRhdGVEZXRhaWxzLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Home/CandidateDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DYW5kaWRhdGVEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Municipalities/MunicipalityBrowser.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVuaWNpcGFsaXRpZXNcTXVuaWNpcGFsaXR5QnJvd3Nlci5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Municipalities/MunicipalityBrowser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvTXVuaWNpcGFsaXRpZXMvTXVuaWNpcGFsaXR5QnJvd3Nlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_BallotBuilderCart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9CYWxsb3RCdWlsZGVyQ2FydC5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Shared/_BallotBuilderCart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19CYWxsb3RCdWlsZGVyQ2FydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_PositionDescriptions.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qb3NpdGlvbkRlc2NyaXB0aW9ucy5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Shared/_PositionDescriptions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Qb3NpdGlvbkRlc2NyaXB0aW9ucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-6orkx2cgkr
+[/Users/danielsaavedra/Documents/Fall2026/4977 - IOS/Assignment/Backend/municipal-election-web/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-06a319xsdk
