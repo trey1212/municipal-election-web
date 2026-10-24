@@ -52,13 +52,27 @@ body.admin-theme {
 .admin-theme .form-select {
     background-color: #0f172a !important;
     border: 1px solid #334155 !important;
-    color: #f8fafc !important;
+    color: #f8fafc !important; /* Forces input text to be white */
+}
+
+/* Lighten the placeholder text so it is visible on the dark background */
+.admin-theme .form-control::placeholder {
+    color: #94a3b8 !important; 
 }
 
 .admin-theme .form-control:focus, 
 .admin-theme .form-select:focus {
     border-color: #3b82f6 !important;
     box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Prevent browser autofill from turning the background white and text dark */
+.admin-theme input:-webkit-autofill,
+.admin-theme input:-webkit-autofill:hover, 
+.admin-theme input:-webkit-autofill:focus, 
+.admin-theme input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+    -webkit-text-fill-color: #f8fafc !important;
 }
 
 .text-slate-400 { color: #94a3b8 !important; }

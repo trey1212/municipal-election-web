@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("municipal-election-web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7beb23de9aa9665aff5773ed60e0a689cfc09ce6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+56f68eb0f48ee8bf1f7f048564c869dd77b3c3f2")]
 [assembly: System.Reflection.AssemblyProductAttribute("municipal-election-web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("municipal-election-web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

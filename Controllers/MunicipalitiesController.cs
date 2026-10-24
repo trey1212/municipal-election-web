@@ -19,4 +19,21 @@ public class MunicipalitiesController : Controller
         var municipalities = await _context.Municipalities.ToListAsync();
         return View("MunicipalityBrowser", municipalities);
     }
+
+    public async Task<IActionResult> Candidates(int id)
+    {
+        var municipality = await _context.Municipalities
+            .Include(m => m.Candidates)
+                .ThenInclude(c => c.Position)
+            .FirstOrDefaultAsync(m => m.MunicipalityId == id);
+
+        if (municipality == null)
+        {
+            return NotFound();
+        }
+
+        municipality.Candidates = municipality.Candidates.OrderBy(c => c.PositionId).ToList();
+
+        return View("MunicipalityDetails", municipality);
+    }
 }
