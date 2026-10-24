@@ -26,20 +26,17 @@ public class MunicipalitiesController : Controller
         _userManager = userManager;
     }
 
-    // GET: /Admin/Municipalities
     public async Task<IActionResult> Index()
     {
         var municipalities = await _context.Municipalities.ToListAsync();
         return View(municipalities);
     }
 
-    // GET: /Admin/Municipalities/Create
     public IActionResult Create()
     {
         return View();
     }
 
-    // POST: /Admin/Municipalities/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateMunicipality model)
@@ -84,7 +81,6 @@ public class MunicipalitiesController : Controller
         return View(model);
     }
 
-    // GET: /Admin/Municipalities/Edit/5
     public async Task<IActionResult> Edit(int id)
     {
         var municipality = await _context.Municipalities.FindAsync(id);
@@ -104,7 +100,6 @@ public class MunicipalitiesController : Controller
         return View("Update", model);
     }
 
-    // POST: /Admin/Municipalities/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, UpdateMunicipality model)
@@ -118,13 +113,11 @@ public class MunicipalitiesController : Controller
 
             bool nameChanged = municipalityToUpdate.Name != model.Name;
 
-            // 1. Update text properties
             municipalityToUpdate.Name = model.Name;
             municipalityToUpdate.Province = model.Province;
             municipalityToUpdate.ElectionDate = model.ElectionDate;
             municipalityToUpdate.Description = model.Description;
 
-            // 2. Check if a NEW logo was uploaded
             if (model.NewLogoUpload != null)
             {
                 if (!string.IsNullOrEmpty(municipalityToUpdate.LogoUrl))
@@ -142,7 +135,6 @@ public class MunicipalitiesController : Controller
                     await model.NewLogoUpload.CopyToAsync(stream);
                 }
 
-                // Overwrite the old logo path
                 municipalityToUpdate.LogoUrl = "/images/" + uniqueFileName;
             }
 
@@ -156,7 +148,6 @@ public class MunicipalitiesController : Controller
 
                 if (adminUser != null)
                 {
-                    // Update the existing user's username instead of creating a new one
                     var newUsername = model.Name.ToLower().Replace(" ", "");
                     adminUser.UserName = newUsername;
                     await _userManager.UpdateAsync(adminUser);

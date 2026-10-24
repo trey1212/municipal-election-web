@@ -2,81 +2,88 @@
 @model LoginModel
 
 @{
-    ViewData["Title"] = "Log in";
+    Layout = null;
+    ViewData["Title"] = "Log in to Admin";
 }
 
-<h1>@ViewData["Title"]</h1>
-<div class="row">
-    <div class="col-md-4">
-        <section>
-            <form id="account" method="post">
-                <h2>Use a local account to log in.</h2>
-                <hr />
-                <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true"
-                           placeholder="name@example.com" />
-                    <label asp-for="Input.Username" class="form-label">Username</label>
-                    <span asp-validation-for="Input.Username" class="text-danger"></span>
-                </div>
-                <div class="form-floating mb-3">
-                    <input asp-for="Input.Password" class="form-control" autocomplete="current-password"
-                           aria-required="true" placeholder="password" />
-                    <label asp-for="Input.Password" class="form-label">Password</label>
-                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                </div>
-                <div>
-                    <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary">Log in</button>
-                </div>
-                <div>
-                    <p>
-                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
-                    </p>
-                    <p>
-                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
-                    </p>
-                    <p>
-                        <a id="resend-confirmation" asp-page="./ResendEmailConfirmation">Resend email confirmation</a>
-                    </p>
-                </div>
-            </form>
-        </section>
-    </div>
-    <div class="col-md-6 col-md-offset-2">
-        <section>
-            <h3>Use another service to log in.</h3>
-            <hr />
-            @{
-                if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                {
-                    <div>
-                        <p>
-                            There are no external authentication services configured. See this <a
-                            href="https://go.microsoft.com/fwlink/?LinkID=532715">article
-                            about setting up this ASP.NET application to support logging in via external services</a>.
-                        </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/admin-theme.css" asp-append-version="true" />
+
+    <!-- Inline styling for text -->
+    <style>
+        .form-floating > .form-control {
+            color: #f8fafc !important;
+        }
+        .form-floating > .form-control::placeholder {
+            color: #94a3b8 !important; 
+        }
+        
+        .form-floating > label {
+            color: #cbd5e1 !important; 
+        }
+
+        .form-floating > .form-control:focus ~ label::after,
+        .form-floating > .form-control:not(:placeholder-shown) ~ label::after {
+            background-color: #0f172a !important; 
+        }
+        
+        input:-webkit-autofill,
+        input:-webkit-autofill:hover, 
+        input:-webkit-autofill:focus, 
+        input:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px #0f172a inset !important;
+            -webkit-text-fill-color: #f8fafc !important;
+        }
+    </style>
+</head>
+<body class="admin-theme d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-5">
+                <div class="dark-card rounded-4 shadow-lg overflow-hidden">
+                    <div class="p-4 p-md-5">
+                        <form id="account" method="post">
+                            <div class="text-center mb-4">
+                                <h3 class="fw-bold text-slate-100 mb-1">BC Ballot Builder Admin Portal</h3>
+                                <p class="text-slate-400">Please sign in to continue</p>
+                            </div>
+                            
+                            <div asp-validation-summary="ModelOnly" class="text-danger small mb-3" role="alert"></div>
+                            
+                            <div class="form-floating mb-4">
+                                <input asp-for="Input.Username" class="form-control" autocomplete="username" aria-required="true" placeholder="admin_user" />
+                                <label asp-for="Input.Username" class="text-slate-400">Username</label>
+                                <span asp-validation-for="Input.Username" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="form-floating mb-4">
+                                <input asp-for="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                                <label asp-for="Input.Password" class="text-slate-400">Password</label>
+                                <span asp-validation-for="Input.Password" class="text-danger small"></span>
+                            </div>
+                            
+                            <div class="mt-4 mt-2">
+                                <button id="login-submit" type="submit" class="w-100 btn btn-lg btn-primary rounded-pill fw-bold shadow-sm">Log in</button>
+                            </div>
+                        </form>
                     </div>
-                }
-                else
-                {
-                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post"
-                          class="form-horizontal">
-                        <div>
-                            <p>
-                                @foreach (var provider in Model.ExternalLogins!)
-                                {
-                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name"
-                                            title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                }
-                            </p>
-                        </div>
-                    </form>
-                }
-            }
-        </section>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
 
-@section Scripts {
+    <!-- Scripts required for client-side validation -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <partial name="_ValidationScriptsPartial" />
-}
+</body>
+</html>

@@ -27,10 +27,7 @@
     }
     else
     {
-        <!-- Wrap the exportable content in a targetable div -->
         <div id="pdf-content">
-            
-            <!-- This header is hidden on the webpage, but shown in the PDF -->
             <div id="pdf-header" style="display: none; margin-bottom: 20px;">
                 <h2 style="color: #1e2c49; font-weight: bold;">My Ballot Guide</h2>
                 <p>Generated on @DateTime.Now.ToString("MMMM dd, yyyy")</p>
@@ -43,8 +40,6 @@
                     <div class="col-md-6 col-lg-4" id="candidate-card-@candidate.CandidateId">
                         <div class="card h-100 shadow-sm border-0 rounded-3">
                             <div class="row g-0 h-100">
-                                
-                                <!-- Added pdf-hide to this column so the image is stripped from the PDF -->
                                 <div class="col-4 pdf-hide d-print-none">
                                     @if (!string.IsNullOrEmpty(candidate.PhotoUrl))
                                     {
@@ -58,14 +53,12 @@
                                     }
                                 </div>
                                 
-                                <!-- Added an id to the text column so we can resize it during PDF generation -->
                                 <div class="col-8" id="text-col-@candidate.CandidateId">
                                     <div class="card-body d-flex flex-column h-100">
                                         <h5 class="card-title fw-bold mb-1">@candidate.Name</h5>
                                         <h6 class="card-subtitle mb-2 text-primary">@candidate.Position?.Name</h6>
                                         <span class="badge bg-dark mb-2 align-self-start">@candidate.Municipality?.Name</span>
                                         
-                                        <!-- Removed the -webkit-line-clamp styles so the full biography is always visible -->
                                         <p class="card-text small text-muted mt-2 mb-3">
                                             @candidate.Biography
                                         </p>
@@ -114,11 +107,9 @@
             const element = document.getElementById('pdf-content');
             const header = document.getElementById('pdf-header');
             
-            // Get the elements that need to be hidden/modified
             const hideElements = document.querySelectorAll('.pdf-hide');
             const textColumns = document.querySelectorAll('[id^="text-col-"]');
 
-            // Show header, hide images/buttons, and expand the text to full width (col-12)
             header.style.display = 'block';
             hideElements.forEach(el => el.style.display = 'none');
             textColumns.forEach(col => {
@@ -135,12 +126,10 @@
                 jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
             };
 
-            // Generate the file, then instantly restore the UI to normal
             html2pdf().set(opt).from(element).save().then(() => {
                 header.style.display = 'none';
                 hideElements.forEach(el => el.style.display = 'block');
                 
-                // Revert text columns back to their original size next to the image
                 textColumns.forEach(col => {
                     col.classList.remove('col-12');
                     col.classList.add('col-8');

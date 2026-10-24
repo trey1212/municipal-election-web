@@ -26,7 +26,6 @@ function toggleGlobalCandidate(id, shouldOpenCart) {
         .then(data => {
             console.log("Response from server:", data);
             
-            // This safely handles if your server returns "isSaved" OR "IsSaved" (capital I)
             const savedState = data.isSaved !== undefined ? data.isSaved : data.IsSaved;
             
             console.log(`Calculated saved state: ${savedState}`);

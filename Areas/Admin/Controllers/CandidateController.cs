@@ -22,7 +22,6 @@ public class CandidatesController : Controller
         _environment = environment;
     }
 
-    // GET: /Admin/Candidates
     public async Task<IActionResult> Index()
     {
         var query = _context.Candidates
@@ -30,7 +29,6 @@ public class CandidatesController : Controller
             .Include(c => c.Municipality)
             .AsQueryable();
 
-        // Scope data for Municipality Admins
         if (User.IsInRole("MunicipalityAdmin"))
         {
             var adminMunicipalityId = int.Parse(User.FindFirstValue("MunicipalityId")!);
@@ -40,19 +38,17 @@ public class CandidatesController : Controller
         return View(await query.ToListAsync());
     }
 
-    // GET: /Admin/Candidates/Create
+    // CREATE Functions
     public IActionResult Create()
     {
         PopulateDropdowns();
         return View();
     }
 
-    // POST: /Admin/Candidates/Create
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(CreateCandidate model)
     {
-        // Make sure the municipality admin can only CRUD their municipality
         if (User.IsInRole("MunicipalityAdmin"))
         {
             model.MunicipalityId = int.Parse(User.FindFirstValue("MunicipalityId")!);
@@ -90,7 +86,7 @@ public class CandidatesController : Controller
         return View(model);
     }
 
-    // Helper method to generate the <select> dropdown options for the Razor Views
+    // Helper method to generate the dropdown options
     private void PopulateDropdowns(int? selectedMunicipality = null, int? selectedPosition = null)
     {
         var municipalitiesQuery = _context.Municipalities.AsQueryable();
@@ -102,7 +98,6 @@ public class CandidatesController : Controller
         }
 
         ViewBag.Municipalities = new SelectList(municipalitiesQuery, "MunicipalityId", "Name", selectedMunicipality);
-        // Bring the table into memory and filter out duplicate names
         var uniquePositions = _context.Positions
             .AsEnumerable()
             .DistinctBy(p => p.Name)
@@ -111,13 +106,12 @@ public class CandidatesController : Controller
         ViewBag.Positions = new SelectList(uniquePositions, "PositionId", "Name", selectedPosition);
     }
 
-    // GET: /Admin/Candidates/Edit/5
+    // UPDATE Functions
     public async Task<IActionResult> Edit(int id)
     {
         var candidate = await _context.Candidates.FindAsync(id);
         if (candidate == null) return NotFound();
 
-        // Ensures the municipal admin can only edit their respective municipality
         if (User.IsInRole("MunicipalityAdmin"))
         {
             var adminMunicipalityId = int.Parse(User.FindFirstValue("MunicipalityId")!);
@@ -138,14 +132,12 @@ public class CandidatesController : Controller
         return View("Update", model);
     }
 
-    // POST: /Admin/Candidates/Edit/5
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(int id, UpdateCandidate model)
     {
         if (id != model.CandidateId) return NotFound();
 
-        // Security check: Lock the Municipality ID for Municipality Admins
         if (User.IsInRole("MunicipalityAdmin"))
         {
             var adminMunicipalityId = int.Parse(User.FindFirstValue("MunicipalityId")!);
@@ -157,7 +149,6 @@ public class CandidatesController : Controller
             var candidateToUpdate = await _context.Candidates.FindAsync(model.CandidateId);
             if (candidateToUpdate == null) return NotFound();
 
-            // One final verification that the admin owns this original record
             if (User.IsInRole("MunicipalityAdmin") && candidateToUpdate.MunicipalityId != int.Parse(User.FindFirstValue("MunicipalityId")!))
             {
                 return Forbid();
@@ -168,7 +159,6 @@ public class CandidatesController : Controller
             candidateToUpdate.PositionId = model.PositionId;
             candidateToUpdate.MunicipalityId = model.MunicipalityId;
 
-            // Check if a NEW photo was uploaded
             if (model.NewPhotoUpload != null)
             {
                 if (!string.IsNullOrEmpty(candidateToUpdate.PhotoUrl))
@@ -199,6 +189,7 @@ public class CandidatesController : Controller
         return View(model);
     }
 
+    // DELETE Functions
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Delete(int id)
@@ -206,7 +197,6 @@ public class CandidatesController : Controller
         var candidate = await _context.Candidates.FindAsync(id);
         if (candidate == null) return NotFound();
 
-        // Final security verification
         if (User.IsInRole("MunicipalityAdmin") && candidate.MunicipalityId != int.Parse(User.FindFirstValue("MunicipalityId")!))
         {
             return Forbid();

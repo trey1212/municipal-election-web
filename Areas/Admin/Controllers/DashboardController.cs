@@ -60,6 +60,6 @@ public class DashboardController : Controller
     public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
-        return RedirectToAction("Index", "Home", new { area = "" }); // Sends them back to the public homepage
+        return RedirectToAction("Index", "Home", new { area = "" });
     }
 }

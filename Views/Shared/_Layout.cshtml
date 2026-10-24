@@ -11,11 +11,8 @@
 </head>
 <body>
     <header>
-        <!-- Views/Shared/_Layout.cshtml -->
         <nav class="navbar navbar-expand-lg navbar-dark custom-nav shadow-sm py-3 mb-5">
-            <!-- Changed to 'container' from 'container-fluid' to align with body content -->
             <div class="container">
-                <!-- Made the brand text bolder and slightly larger -->
                 <a class="navbar-brand fw-bold fs-4 tracking-tight" asp-area="" asp-controller="Home" asp-action="Index">
                     BC Ballot Builder
                 </a>
@@ -24,7 +21,6 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between mt-3 mt-lg-0">
-                    <!-- Increased gap from gap-2 to gap-4 for wider spacing -->
                     <ul class="navbar-nav flex-grow-1 justify-content-center align-items-center gap-4">
                         <li class="nav-item w-100 w-lg-auto text-center">
                             <a class="btn border-0 text-white rounded-pill px-4 w-100 nav-pill-btn" asp-area="" asp-controller="Municipalities" asp-action="MunicipalityBrowser">Municipalities</a>
@@ -36,8 +32,6 @@
                             <a class="btn border-0 text-white rounded-pill px-4 w-100 nav-pill-btn" asp-area="" asp-controller="Home" asp-action="BallotBuilder">Ballot Builder</a>
                         </li>
                     </ul>
-                    
-                    <!-- Added ms-lg-5 to push the cart button further away from the center group -->
                     <div class="d-flex justify-content-center mt-3 mt-lg-0 ms-lg-5">
                         <a class="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm text-white" href="#" data-bs-toggle="offcanvas" data-bs-target="#votingCartSidebar" aria-controls="votingCartSidebar">
                             <i class="bi bi-card-checklist me-2"></i> View My List
@@ -74,7 +68,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/votingCart.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-
-    
 </body>
 </html>

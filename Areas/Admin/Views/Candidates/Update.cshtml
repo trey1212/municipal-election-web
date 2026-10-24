@@ -18,7 +18,6 @@
                     <input type="hidden" asp-for="CandidateId" />
                     <input type="hidden" asp-for="ExistingPhotoUrl" />
 
-                    <!-- Explicit border color matching the dark theme borders -->
                     <div class="text-center mb-5 pb-4 border-bottom" style="border-color: #334155 !important;">
                         <label class="form-label text-slate-400 fw-bold d-block mb-3">Current Photo</label>
                         @if (!string.IsNullOrEmpty(Model.ExistingPhotoUrl))

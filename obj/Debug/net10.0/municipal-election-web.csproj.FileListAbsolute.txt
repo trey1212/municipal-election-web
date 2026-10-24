@@ -747,7 +747,6 @@ C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-we
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\yfc7ypekbg-{0}-mlv21k5csn-mlv21k5csn.gz
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\gkklrrhprz-{0}-61n19gt1b8-61n19gt1b8.gz
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\nky54d8yye-{0}-xtxxf3hu2r-xtxxf3hu2r.gz
-C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\xu3u22e20g-{0}-fm6gzox68j-fm6gzox68j.gz
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\3yeadeti74-{0}-t1cqhe9u97-t1cqhe9u97.gz
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\swxc7oil2r-{0}-c2jlpeoesf-c2jlpeoesf.gz
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\bs4z6xyp1m-{0}-sejl45xvog-sejl45xvog.gz
@@ -818,8 +817,8 @@ C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-we
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\municipal-election-web.pdb
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\municipal-election-web.genruntimeconfig.cache
 C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\ref\municipal-election-web.dll
-C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\scopedcss\Areas\Admin\Views\Shared\_AdminLayout.cshtml.rz.scp.css
-C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\p4i0n8qx03-{0}-yghgj7khs4-yghgj7khs4.gz
-C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\rw40xrvazr-{0}-yghgj7khs4-yghgj7khs4.gz
-C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\g114g92aub-{0}-6mlw8x7pzz-6mlw8x7pzz.gz
-C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\c84ccjzzh6-{0}-z6u71gh6xv-z6u71gh6xv.gz
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\g114g92aub-{0}-hvfpnh5lgm-hvfpnh5lgm.gz
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\c84ccjzzh6-{0}-b5876v1abz-b5876v1abz.gz
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\xu3u22e20g-{0}-n0f5621q9x-n0f5621q9x.gz
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\p4i0n8qx03-{0}-8mxb94rz0p-8mxb94rz0p.gz
+C:\Users\rjtar\Documents\SCHOOL DOCS\BCIT\Term 4\Comp 4976\municipal-election-web\obj\Debug\net10.0\compressed\rw40xrvazr-{0}-8mxb94rz0p-8mxb94rz0p.gz
