@@ -5,11 +5,13 @@
 
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="fw-bold text-dark">Ballot Builder</h1>
+        <!-- Removed text-dark so it inherits the global Montserrat blue -->
+        <h1 class="fw-bold">Ballot Builder</h1>
         @if (Model.Any())
         {
-            <button onclick="window.print()" class="btn btn-outline-primary d-print-none">
-                <i class="bi bi-printer"></i> Print Guide
+            <!-- Modernized print button with pill shape and shadow -->
+            <button onclick="window.print()" class="btn btn-outline-primary rounded-pill px-4 fw-semibold shadow-sm d-print-none">
+                <i class="bi bi-printer me-2"></i> Print Guide
             </button>
         }
     </div>
@@ -49,8 +51,9 @@
                                     <span class="badge bg-dark mb-2 align-self-start">@candidate.Municipality?.Name</span>
                                     
                                     <div class="mt-auto d-print-none">
-                                        <button onclick="removeCandidate(@candidate.CandidateId)" class="btn btn-sm btn-outline-danger w-100">
-                                            Remove
+                                        <!-- Modernized remove button with icon, pill shape, and bold text -->
+                                        <button onclick="removeCandidate(@candidate.CandidateId)" class="btn btn-sm btn-light text-danger border rounded-pill w-100 fw-bold shadow-sm">
+                                            <i class="bi bi-trash3 me-1"></i> Remove
                                         </button>
                                     </div>
                                 </div>
@@ -70,10 +73,20 @@
                 .then(res => res.json())
                 .then(data => {
                     if (!data.isSaved) {
-                        document.getElementById(`candidate-card-${id}`).remove();
-                        if (document.querySelectorAll('[id^="candidate-card-"]').length === 0) {
-                            location.reload(); // Reload to show the empty state message
-                        }
+                        const card = document.getElementById(`candidate-card-${id}`);
+                        
+                        // Apply fade-out and slight shrink animation
+                        card.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+                        card.style.opacity = "0";
+                        card.style.transform = "scale(0.95)";
+                        
+                        // Wait for animation to finish before removing from DOM
+                        setTimeout(() => {
+                            card.remove();
+                            if (document.querySelectorAll('[id^="candidate-card-"]').length === 0) {
+                                location.reload(); // Reload to show the empty state message
+                            }
+                        }, 300);
                     }
                 })
                 .catch(err => console.error('Error removing candidate:', err));

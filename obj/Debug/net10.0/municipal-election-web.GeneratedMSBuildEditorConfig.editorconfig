@@ -51,10 +51,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcTXVuaWNpcGFsaXRpZXNcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -99,12 +95,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Home/MunicipalCandidates.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNdW5pY2lwYWxDYW5kaWRhdGVzLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Municipalities/MunicipalityBrowser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTXVuaWNpcGFsaXRpZXNcTXVuaWNpcGFsaXR5QnJvd3Nlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/Error.cshtml]
@@ -119,6 +115,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_PositionDescriptions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Qb3NpdGlvbkRlc2NyaXB0aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -130,6 +130,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Areas/Admin/Views/Shared/_AdminLayout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcU2hhcmVkXF9BZG1pbkxheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = b-eo565hksjq
 
 [C:/Users/rjtar/Documents/SCHOOL DOCS/BCIT/Term 4/Comp 4976/municipal-election-web/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s

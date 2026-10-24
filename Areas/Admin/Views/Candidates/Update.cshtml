@@ -1,81 +1,86 @@
 @model municipal_election_web.Areas.Admin.Models.UpdateCandidate
-
 @{
-    ViewData["Title"] = "View / Edit Candidate";
+    ViewData["Title"] = "Edit Candidate";
 }
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>@Model.Name Details</h2>
-        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">Back to Dashboard</a>
-    </div>
-    <hr />
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="h3 fw-bold text-slate-100 mb-0">Edit: @Model.Name</h2>
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-light rounded-pill btn-sm px-3">
+                <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+            </a>
+        </div>
 
-    <div class="row">
-        <div class="col-md-7">
-            <form asp-action="Edit" enctype="multipart/form-data">
-                <input type="hidden" asp-for="CandidateId" />
-                <input type="hidden" asp-for="ExistingPhotoUrl" />
+        <div class="dark-card rounded-4 mb-5">
+            <div class="card-body p-4 p-md-5">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="CandidateId" />
+                    <input type="hidden" asp-for="ExistingPhotoUrl" />
 
-                <div class="mb-3">
-                    <label class="form-label text-muted fw-bold">Current Photo</label>
-                    <div class="mb-3">
+                    <!-- Explicit border color matching the dark theme borders -->
+                    <div class="text-center mb-5 pb-4 border-bottom" style="border-color: #334155 !important;">
+                        <label class="form-label text-slate-400 fw-bold d-block mb-3">Current Photo</label>
                         @if (!string.IsNullOrEmpty(Model.ExistingPhotoUrl))
                         {
-                            <img src="@Model.ExistingPhotoUrl" alt="Current Photo" class="img-thumbnail rounded-circle"
-                                 style="height: 150px; width: 150px; object-fit: cover;" />
+                            <img src="@Model.ExistingPhotoUrl" alt="Current Photo" class="rounded-circle shadow-sm"
+                                 style="height: 150px; width: 150px; object-fit: cover; border: 4px solid #334155;" />
                         }
                         else
                         {
-                            <div class="bg-light d-flex align-items-center justify-content-center rounded-circle border"
-                                 style="height: 150px; width: 150px;">
-                                <span class="text-muted small">No Photo</span>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-circle"
+                                 style="height: 150px; width: 150px; background-color: #0f172a; border: 2px dashed #334155;">
+                                <i class="bi bi-person text-slate-400" style="font-size: 4rem;"></i>
                             </div>
                         }
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <label asp-for="Name" class="form-label fw-bold"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
+                    <div class="mb-4">
+                        <label asp-for="Name" class="form-label fw-bold text-slate-300"></label>
+                        <input asp-for="Name" class="form-control form-control-lg" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
 
-                <div class="mb-3">
-                    <label asp-for="PositionId" class="form-label fw-bold">Position</label>
-                    <select asp-for="PositionId" class="form-select" asp-items="ViewBag.Positions"></select>
-                    <span asp-validation-for="PositionId" class="text-danger"></span>
-                </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="PositionId" class="form-label fw-bold text-slate-300">Position</label>
+                            <select asp-for="PositionId" class="form-select" asp-items="ViewBag.Positions"></select>
+                            <span asp-validation-for="PositionId" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mt-4 mt-md-0">
+                            <label asp-for="MunicipalityId" class="form-label fw-bold text-slate-300">Municipality</label>
+                            <select asp-for="MunicipalityId" class="form-select" asp-items="ViewBag.Municipalities"
+                                    disabled="@(User.IsInRole("MunicipalityAdmin") ? "disabled" : null)">
+                            </select>
+                            
+                            @if (User.IsInRole("MunicipalityAdmin"))
+                            {
+                                <input type="hidden" asp-for="MunicipalityId" />
+                            }
+                            <span asp-validation-for="MunicipalityId" class="text-danger small"></span>
+                        </div>
+                    </div>
 
-                <div class="mb-3">
-                    <label asp-for="MunicipalityId" class="form-label fw-bold">Municipality</label>
-                    <select asp-for="MunicipalityId" class="form-select" asp-items="ViewBag.Municipalities"
-                            disabled="@(User.IsInRole("MunicipalityAdmin") ? "disabled" : null)">
-                    </select>
-                    
-                    @if (User.IsInRole("MunicipalityAdmin"))
-                    {
-                        <!-- Ensures the ID is still submitted since the select is disabled visually -->
-                        <input type="hidden" asp-for="MunicipalityId" />
-                    }
-                    <span asp-validation-for="MunicipalityId" class="text-danger"></span>
-                </div>
+                    <div class="mb-4">
+                        <label asp-for="Biography" class="form-label fw-bold text-slate-300"></label>
+                        <textarea asp-for="Biography" class="form-control" rows="5"></textarea>
+                        <span asp-validation-for="Biography" class="text-danger small"></span>
+                    </div>
 
-                <div class="mb-3">
-                    <label asp-for="Biography" class="form-label fw-bold"></label>
-                    <textarea asp-for="Biography" class="form-control" rows="5"></textarea>
-                    <span asp-validation-for="Biography" class="text-danger"></span>
-                </div>
+                    <div class="mb-5">
+                        <label asp-for="NewPhotoUpload" class="form-label fw-bold text-slate-300">Upload New Photo</label>
+                        <input asp-for="NewPhotoUpload" type="file" class="form-control" accept="image/*" />
+                        <div class="form-text text-slate-400 mt-2"><i class="bi bi-info-circle me-1"></i> Leave this blank to keep the current photo.</div>
+                        <span asp-validation-for="NewPhotoUpload" class="text-danger small"></span>
+                    </div>
 
-                <div class="mb-4">
-                    <label asp-for="NewPhotoUpload" class="form-label fw-bold">Upload New Photo (Optional)</label>
-                    <input asp-for="NewPhotoUpload" type="file" class="form-control" accept="image/*" />
-                    <div class="form-text">Leave this blank to keep the current photo.</div>
-                    <span asp-validation-for="NewPhotoUpload" class="text-danger"></span>
-                </div>
-
-                <button type="submit" id="saveBtn" class="btn btn-primary px-4" disabled>Save Changes</button>
-            </form>
+                    <div class="text-end">
+                        <button type="submit" id="saveBtn" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-sm" disabled>
+                            <i class="bi bi-save me-1"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -87,39 +92,29 @@
         document.addEventListener("DOMContentLoaded", function () {
             const form = document.querySelector("form");
             const saveBtn = document.getElementById("saveBtn");
-            
-            // 1. Store the initial values of all form inputs
             const initialValues = {};
             const elements = form.querySelectorAll("input, textarea, select");
             
             elements.forEach(el => {
                 if (el.name) {
-                    // File inputs are empty on load, otherwise save the text/date value
                     initialValues[el.name] = el.type === "file" ? "" : el.value;
                 }
             });
 
-            // 2. Check for changes
             function checkChanges() {
                 let hasChanged = false;
-                
                 elements.forEach(el => {
                     if (el.name) {
                         if (el.type === "file") {
-                            // If a file was selected, a change occurred
                             if (el.files.length > 0) hasChanged = true;
                         } else {
-                            // If current text/date doesn't match the original, a change occurred
                             if (el.value !== initialValues[el.name]) hasChanged = true;
                         }
                     }
                 });
-
-                // 3. Enable or disable the button based on changes
                 saveBtn.disabled = !hasChanged;
             }
 
-            // 4. Attach event listeners to trigger the check whenever the user types or clicks
             elements.forEach(el => {
                 el.addEventListener("input", checkChanges);
                 el.addEventListener("change", checkChanges);

@@ -1,70 +1,78 @@
 @model municipal_election_web.Areas.Admin.Models.UpdateMunicipality
-
 @{
-    ViewData["Title"] = "View / Edit Municipality";
+    ViewData["Title"] = "Edit Municipality";
 }
 
-<div class="container mt-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2>@Model.Name Details</h2>
-        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">Back to Dashboard</a>
-    </div>
-    <hr />
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="h3 fw-bold text-slate-100 mb-0">Edit: @Model.Name</h2>
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-light rounded-pill btn-sm px-3">
+                <i class="bi bi-arrow-left me-1"></i> Back to Dashboard
+            </a>
+        </div>
 
-    <div class="row">
-        <div class="col-md-7">
-            <form asp-action="Edit" enctype="multipart/form-data">
-                <input type="hidden" asp-for="MunicipalityId" />
-                <input type="hidden" asp-for="ExistingLogoUrl" />
+        <div class="dark-card rounded-4 mb-5">
+            <div class="card-body p-4 p-md-5">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <input type="hidden" asp-for="MunicipalityId" />
+                    <input type="hidden" asp-for="ExistingLogoUrl" />
 
-                <div class="mb-3">
-                    <label class="form-label text-muted fw-bold">Current Logo</label>
-                    <div class="mb-3">
+                    <div class="text-center mb-5 pb-4 border-bottom" style="border-color: #334155 !important;">
+                        <label class="form-label text-slate-400 fw-bold d-block mb-3">Current Logo</label>
                         @if (!string.IsNullOrEmpty(Model.ExistingLogoUrl))
                         {
-                            <img src="@Model.ExistingLogoUrl" alt="Current Logo" class="img-thumbnail"
-                                 style="max-height: 150px;" />
+                            <img src="@Model.ExistingLogoUrl" alt="Current Logo" class="rounded-3 shadow-sm bg-white"
+                                 style="height: 120px; padding: 10px; object-fit: contain; border: 1px solid #334155;" />
                         }
                         else
                         {
-                            <span class="text-muted fst-italic">No logo on file.</span>
+                            <div class="d-inline-flex align-items-center justify-content-center rounded-3"
+                                 style="height: 120px; width: 120px; background-color: #0f172a; border: 2px dashed #334155;">
+                                <i class="bi bi-building text-slate-400" style="font-size: 3rem;"></i>
+                            </div>
                         }
                     </div>
-                </div>
 
-                <div class="mb-3">
-                    <label asp-for="Name" class="form-label fw-bold"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
+                    <div class="mb-4">
+                        <label asp-for="Name" class="form-label fw-bold text-slate-300"></label>
+                        <input asp-for="Name" class="form-control form-control-lg" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
 
-                <div class="mb-3">
-                    <label asp-for="Province" class="form-label fw-bold"></label>
-                    <input asp-for="Province" class="form-control" />
-                    <span asp-validation-for="Province" class="text-danger"></span>
-                </div>
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <label asp-for="Province" class="form-label fw-bold text-slate-300"></label>
+                            <input asp-for="Province" class="form-control" />
+                            <span asp-validation-for="Province" class="text-danger small"></span>
+                        </div>
+                        <div class="col-md-6 mt-4 mt-md-0">
+                            <label asp-for="ElectionDate" class="form-label fw-bold text-slate-300">Election Date</label>
+                            <input asp-for="ElectionDate" type="date" class="form-control" />
+                            <span asp-validation-for="ElectionDate" class="text-danger small"></span>
+                        </div>
+                    </div>
 
-                <div class="mb-3">
-                    <label asp-for="ElectionDate" class="form-label fw-bold">Election Date</label>
-                    <input asp-for="ElectionDate" type="date" class="form-control" />
-                    <span asp-validation-for="ElectionDate" class="text-danger"></span>
-                </div>
+                    <div class="mb-4">
+                        <label asp-for="Description" class="form-label fw-bold text-slate-300"></label>
+                        <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+                        <span asp-validation-for="Description" class="text-danger small"></span>
+                    </div>
 
-                <div class="mb-3">
-                    <label asp-for="Description" class="form-label fw-bold"></label>
-                    <textarea asp-for="Description" class="form-control" rows="4"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
+                    <div class="mb-5">
+                        <label asp-for="NewLogoUpload" class="form-label fw-bold text-slate-300">Upload New Logo</label>
+                        <input asp-for="NewLogoUpload" type="file" class="form-control" accept="image/*" />
+                        <div class="form-text text-slate-400 mt-2"><i class="bi bi-info-circle me-1"></i> Leave this blank to keep the current logo.</div>
+                        <span asp-validation-for="NewLogoUpload" class="text-danger small"></span>
+                    </div>
 
-                <div class="mb-4">
-                    <label asp-for="NewLogoUpload" class="form-label fw-bold">Upload New Logo (Optional)</label>
-                    <input asp-for="NewLogoUpload" type="file" class="form-control" accept="image/*" />
-                    <div class="form-text">Leave this blank to keep the current logo.</div>
-                    <span asp-validation-for="NewLogoUpload" class="text-danger"></span>
-                </div>
-
-                <button type="submit" id="saveBtn" class="btn btn-primary px-4" disabled>Save Changes</button>
-            </form>
+                    <div class="text-end">
+                        <button type="submit" id="saveBtn" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-sm" disabled>
+                            <i class="bi bi-save me-1"></i> Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -76,39 +84,29 @@
         document.addEventListener("DOMContentLoaded", function () {
             const form = document.querySelector("form");
             const saveBtn = document.getElementById("saveBtn");
-            
-            // 1. Store the initial values of all form inputs
             const initialValues = {};
             const elements = form.querySelectorAll("input, textarea, select");
             
             elements.forEach(el => {
                 if (el.name) {
-                    // File inputs are empty on load, otherwise save the text/date value
                     initialValues[el.name] = el.type === "file" ? "" : el.value;
                 }
             });
 
-            // 2. Check for changes
             function checkChanges() {
                 let hasChanged = false;
-                
                 elements.forEach(el => {
                     if (el.name) {
                         if (el.type === "file") {
-                            // If a file was selected, a change occurred
                             if (el.files.length > 0) hasChanged = true;
                         } else {
-                            // If current text/date doesn't match the original, a change occurred
                             if (el.value !== initialValues[el.name]) hasChanged = true;
                         }
                     }
                 });
-
-                // 3. Enable or disable the button based on changes
                 saveBtn.disabled = !hasChanged;
             }
 
-            // 4. Attach event listeners to trigger the check whenever the user types or clicks
             elements.forEach(el => {
                 el.addEventListener("input", checkChanges);
                 el.addEventListener("change", checkChanges);

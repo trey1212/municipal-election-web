@@ -1,3 +1,25 @@
+/* Import Montserrat from Google Fonts for headings */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* Apply Helvetica to all standard text and set it to green */
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #2e7d32; 
+    background-color: #f7f7f2;
+    margin-bottom: 60px;
+}
+
+/* Apply Montserrat and blue color specifically to headings */
+h1, h2, h3, h4, h5, h6, .display-4, .navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    color: #1565c0 !important; 
+}
+
+/* Ensure links outside of buttons match the theme */
+a:not(.btn) {
+    color: #1565c0;
+}
+
 html {
   font-size: 14px;
 }
@@ -28,4 +50,54 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+.custom-nav {
+    background-color: #1565c0 !important;
+}
+
+.election-positions p {
+    color: #000000;
+}
+
+.navbar-brand {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff !important;
+}
+
+.navbar .btn-outline-primary {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.navbar .btn-outline-primary:hover {
+    color: #1565c0;
+    background-color: #ffffff;
+}
+
+/* Borderless navbar buttons with soft hover */
+.nav-pill-btn {
+    transition: background-color 0.2s ease-in-out;
+}
+
+.nav-pill-btn:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Faint white background on hover */
+    color: #ffffff;
+}
+
+/* Modern Square Card with Hover Animation */
+.modern-card {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Ensure the hero background contrasts cleanly */
+.bg-light {
+    background-color: #f8f9fa !important;
+}
+
+/* Make position titles inside the descriptions green */
+.election-positions h3 {
+    color: #2e7d32 !important;
 }

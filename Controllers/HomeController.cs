@@ -16,10 +16,9 @@ public class HomeController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
     {
-        var municipalities = await _context.Municipalities.ToListAsync();
-        return View(municipalities);
+        return View();
     }
 
     public async Task<IActionResult> Candidates(int id)

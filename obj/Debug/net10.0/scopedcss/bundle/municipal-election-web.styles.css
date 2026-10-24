@@ -1,3 +1,72 @@
+/* /Areas/Admin/Views/Shared/_AdminLayout.cshtml.rz.scp.css */
+/* Deep slate background for the entire admin portal */
+body.admin-theme[b-eo565hksjq] {
+    background-color: #0f172a !important; 
+    color: #f8fafc !important;
+}
+
+.admin-theme .navbar[b-eo565hksjq] {
+    background-color: #0b1120 !important;
+    border-bottom: 1px solid #1e293b !important;
+}
+
+/* Modern Dark Cards */
+.dark-card[b-eo565hksjq] {
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+/* Polished Dark Table Styling */
+.dark-table[b-eo565hksjq] {
+    color: #e2e8f0;
+    margin-bottom: 0;
+}
+
+.dark-table thead th[b-eo565hksjq] {
+    background-color: #0f172a !important;
+    color: #94a3b8 !important;
+    border-bottom: 1px solid #334155 !important;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.dark-table tbody tr[b-eo565hksjq] {
+    border-bottom: 1px solid #1e293b;
+    transition: background-color 0.2s ease;
+}
+
+.dark-table tbody td[b-eo565hksjq] {
+    background-color: transparent !important;
+    color: #f8fafc !important;
+    border: none;
+}
+
+.dark-table tbody tr:hover td[b-eo565hksjq] {
+    background-color: #334155 !important;
+}
+
+/* Form and Input Elements */
+.admin-theme .form-control[b-eo565hksjq], 
+.admin-theme .form-select[b-eo565hksjq] {
+    background-color: #0f172a !important;
+    border: 1px solid #334155 !important;
+    color: #f8fafc !important;
+}
+
+.admin-theme .form-control:focus[b-eo565hksjq], 
+.admin-theme .form-select:focus[b-eo565hksjq] {
+    border-color: #3b82f6 !important;
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25) !important;
+}
+
+/* Refined Dark Text Utilities */
+.text-slate-400[b-eo565hksjq] { color: #94a3b8 !important; }
+.text-slate-300[b-eo565hksjq] { color: #cbd5e1 !important; }
+.text-slate-100[b-eo565hksjq] { color: #f1f5f9 !important; }
 /* /Views/Shared/_Layout.cshtml.rz.scp.css */
 /* Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */

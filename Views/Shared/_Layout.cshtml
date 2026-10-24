@@ -11,30 +11,38 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BC Ballot Builder</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+        <!-- Views/Shared/_Layout.cshtml -->
+        <nav class="navbar navbar-expand-lg navbar-dark custom-nav shadow-sm py-3 mb-5">
+            <!-- Changed to 'container' from 'container-fluid' to align with body content -->
+            <div class="container">
+                <!-- Made the brand text bolder and slightly larger -->
+                <a class="navbar-brand fw-bold fs-4 tracking-tight" asp-area="" asp-controller="Home" asp-action="Index">
+                    BC Ballot Builder
+                </a>
+                <button class="navbar-toggler border-0 px-0" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Municipalities</a>
+                <div class="navbar-collapse collapse d-lg-inline-flex justify-content-between mt-3 mt-lg-0">
+                    <!-- Increased gap from gap-2 to gap-4 for wider spacing -->
+                    <ul class="navbar-nav flex-grow-1 justify-content-center align-items-center gap-4">
+                        <li class="nav-item w-100 w-lg-auto text-center">
+                            <a class="btn border-0 text-white rounded-pill px-4 w-100 nav-pill-btn" asp-area="" asp-controller="Municipalities" asp-action="MunicipalityBrowser">Municipalities</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Candidates" asp-action="CandidatesBrowser">Candidates</a>
+                        <li class="nav-item w-100 w-lg-auto text-center">
+                            <a class="btn border-0 text-white rounded-pill px-4 w-100 nav-pill-btn" asp-area="" asp-controller="Candidates" asp-action="CandidatesBrowser">Candidates</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="BallotBuilder">Ballot Builder</a>
-                        </li>
-                        <li class="nav-item ms-md-auto">
-                            <a class="nav-link text-primary fw-bold" href="#" data-bs-toggle="offcanvas" data-bs-target="#votingCartSidebar" aria-controls="votingCartSidebar">
-                                <i class="bi bi-card-checklist"></i> View My List
-                            </a>
+                        <li class="nav-item w-100 w-lg-auto text-center">
+                            <a class="btn border-0 text-white rounded-pill px-4 w-100 nav-pill-btn" asp-area="" asp-controller="Home" asp-action="BallotBuilder">Ballot Builder</a>
                         </li>
                     </ul>
+                    
+                    <!-- Added ms-lg-5 to push the cart button further away from the center group -->
+                    <div class="d-flex justify-content-center mt-3 mt-lg-0 ms-lg-5">
+                        <a class="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm text-white" href="#" data-bs-toggle="offcanvas" data-bs-target="#votingCartSidebar" aria-controls="votingCartSidebar">
+                            <i class="bi bi-card-checklist me-2"></i> View My List
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -53,9 +61,7 @@
             </h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body" id="cartContentArea">
-            <!-- The _VotingGuideCart.cshtml HTML will be injected here automatically -->
-        </div>
+        <div class="offcanvas-body" id="cartContentArea"></div>
     </div>
 
     <footer class="border-top footer text-muted">

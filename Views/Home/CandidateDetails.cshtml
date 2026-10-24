@@ -4,39 +4,52 @@
 }
 
 <div class="container py-5">
+    <!-- Back Button modernized with rounded-pill -->
     <div class="mb-4">
-        <a href="javascript:history.back()" class="btn btn-outline-secondary">&larr; Back</a>
+        <a href="javascript:history.back()" class="btn btn-outline-secondary rounded-pill px-4 fw-semibold">&larr; Back</a>
     </div>
     
-    <div class="row align-items-start">
-        <div class="col-md-4 mb-4 text-center">
-            @if (!string.IsNullOrEmpty(Model.PhotoUrl))
-            {
-                <img src="@Model.PhotoUrl" alt="@Model.Name" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: cover;" />
-            }
-            else
-            {
-                <div class="bg-light d-flex align-items-center justify-content-center rounded border" style="height: 300px;">
-                    <span class="text-muted">No Photo Available</span>
-                </div>
-            }
-        </div>
-        <div class="col-md-8">
-            <h1 class="fw-bold mb-1">@Model.Name</h1>
-            <h4 class="text-primary mb-2">@Model.Position?.Name</h4>
-            <span class="badge bg-dark fs-6 mb-4">@Model.Municipality?.Name</span>
-            
-            <div class="mb-4">
-                <!-- Updated ID and onclick to use the global function -->
-                <button id="saveBtn-@Model.CandidateId" onclick="toggleGlobalCandidate(@Model.CandidateId, true)" 
-                        class="btn @(ViewBag.IsSaved ? "btn-warning" : "btn-outline-warning") px-4">
-                    <i class="bi @(ViewBag.IsSaved ? "bi-star-fill" : "bi-star")"></i> 
-                    <span>@(ViewBag.IsSaved ? "Saved" : "Save to Guide")</span>
-                </button>
+    <!-- Added a clean, white modern container for the profile -->
+    <div class="bg-white p-4 p-md-5 rounded-4 shadow-sm border-0">
+        <div class="row align-items-start">
+            <div class="col-md-4 mb-4 text-center">
+                @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+                {
+                    <img src="@Model.PhotoUrl" alt="@Model.Name" class="img-fluid rounded-4 shadow-sm" style="max-height: 400px; object-fit: cover; width: 100%;" />
+                }
+                else
+                {
+                    <div class="bg-light d-flex align-items-center justify-content-center rounded-4 border-0 shadow-sm" style="height: 300px;">
+                        <span class="text-muted fw-semibold">No Photo Available</span>
+                    </div>
+                }
             </div>
             
-            <h5 class="fw-bold border-bottom pb-2">Biography</h5>
-            <p class="text-dark" style="white-space: pre-wrap;">@Model.Biography</p>
+            <div class="col-md-8 ps-md-4 d-flex flex-column align-items-start">
+                <h1 class="fw-bold mb-1">@Model.Name</h1>
+                
+                <!-- Removed text-primary so it uses your global Montserrat blue -->
+                <h4 class="fw-semibold mb-3">@Model.Position?.Name</h4>
+                
+                <!-- Modern pill badge matching the candidate list styling -->
+                <span class="badge bg-light border rounded-pill px-4 py-2 fs-6 fw-normal shadow-sm mb-4" style="color: #2e7d32;">
+                    @Model.Municipality?.Name
+                </span>
+                
+                <div class="mb-4">
+                    <!-- Retained ID and onclick functionality, added rounded-pill and shadow-sm -->
+                    <button id="saveBtn-@Model.CandidateId" onclick="toggleGlobalCandidate(@Model.CandidateId, true)" 
+                            class="btn @(ViewBag.IsSaved ? "btn-warning" : "btn-outline-warning") rounded-pill px-4 py-2 shadow-sm fw-bold">
+                        <i class="bi @(ViewBag.IsSaved ? "bi-star-fill" : "bi-star") me-1"></i> 
+                        <span>@(ViewBag.IsSaved ? "Saved" : "Save to Guide")</span>
+                    </button>
+                </div>
+                
+                <h5 class="fw-bold border-bottom pb-2 w-100 mt-2">Biography</h5>
+                
+                <!-- Removed text-dark so it inherits the global green Helvetica font -->
+                <p style="white-space: pre-wrap; line-height: 1.7;" class="mt-2">@Model.Biography</p>
+            </div>
         </div>
     </div>
 </div>

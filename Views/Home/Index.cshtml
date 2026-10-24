@@ -1,35 +1,22 @@
-﻿@model IEnumerable<municipal_election_web.Models.Municipality>
-
-@{
-    ViewData["Title"] = "BC Municipality Browser";
+﻿@{
+    ViewData["Title"] = "Home - BC Ballot Builder";
 }
 
-<div class="text-center mb-5">
-    <h1 class="display-4">2026 Municipal Elections</h1>
-    <p class="lead">Select your municipality to view candidates and prepare your voting guide.</p>
-</div>
-
-<div class="row row-cols-1 row-cols-md-2 g-4">
-    @foreach (var city in Model)
-    {
-        <div class="col">
-            <div class="card h-100 shadow-sm">
-                <div class="card-body text-center">
-                    <!-- Displays the logo if it exists -->
-                    @if (!string.IsNullOrEmpty(city.LogoUrl))
-                    {
-                        <img src="@city.LogoUrl" alt="@city.Name Logo" class="img-fluid mb-3" style="max-height: 100px;" />
-                    }
-                    <h2 class="card-title">@city.Name, @city.Province</h2>
-                    <p class="card-text text-muted">Election Date: @city.ElectionDate.ToString("MMMM dd, yyyy")</p>
-                    <p class="card-text">@city.Description</p>
-                    
-                    <!-- Button linking to the Candidates page for this specific city -->
-                    <a asp-controller="Home" asp-action="Candidates" asp-route-id="@city.MunicipalityId" class="btn btn-primary btn-lg mt-3">
-                        View Candidates
-                    </a>
-                </div>
+<div class="container py-5">
+    <!-- Modern Hero Section -->
+    <div class="p-5 bg-light rounded-4 shadow-sm">
+        <div class="container-fluid py-2">
+            <h1 class="display-4 fw-bold mb-3">Welcome to the BC Ballot Builder</h1>
+            <p class="fs-5 mb-4" style="color: #2e7d32; max-width: 800px; line-height: 1.6;">
+                The BC Ballot Builder is a voting guide that provides information on the municipalities
+                in British Columbia. You can view municipalities, their candidates, and create a list of candidates
+                to refer back to when you are ready to vote.
+            </p>
+            
+            <!-- Contained Positions Box -->
+            <div class="p-4 bg-white rounded-4 shadow-sm border">
+                <partial name="_PositionDescriptions" />
             </div>
         </div>
-    }
+    </div>
 </div>

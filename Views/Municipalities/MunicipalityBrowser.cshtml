@@ -1,0 +1,42 @@
+@model IEnumerable<municipal_election_web.Models.Municipality>
+@{
+    ViewData["Title"] = "Browse Municipalities";
+}
+
+<div class="container py-5">
+    <!-- Clean Section Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="fw-bold m-0">Browse Municipalities</h1>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var city in Model)
+        {
+            <div class="col">
+                <div class="card modern-card shadow-sm border-0 rounded-4 h-100">
+                    <div class="card-body d-flex flex-column p-4">
+                        
+                        <!-- Top Row: Logo & Date Badge -->
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            @if (!string.IsNullOrEmpty(city.LogoUrl))
+                            {
+                                <img src="@city.LogoUrl" alt="@city.Name Logo" class="img-fluid rounded" style="max-height: 50px; object-fit: contain;" />
+                            }
+                            <span class="badge bg-primary rounded-pill px-3 py-2 fw-normal">@city.ElectionDate.ToString("MMM dd, yyyy")</span>
+                        </div>
+                        
+                        <h3 class="card-title h5 fw-bold mb-3">@city.Name, @city.Province</h3>
+                        
+                        <p class="card-text flex-grow-1 overflow-hidden text-muted" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; line-height: 1.6;">
+                            @city.Description
+                        </p>
+                        
+                        <a asp-controller="Home" asp-action="Candidates" asp-route-id="@city.MunicipalityId" class="btn btn-outline-primary rounded-pill mt-auto w-100 fw-semibold py-2">
+                            View Candidates
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
