@@ -3,15 +3,16 @@
     ViewData["Title"] = "Ballot Builder";
 }
 
+<!-- Import html2pdf to handle the client-side PDF generation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
 <div class="container py-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <!-- Removed text-dark so it inherits the global Montserrat blue -->
         <h1 class="fw-bold">Ballot Builder</h1>
         @if (Model.Any())
         {
-            <!-- Modernized print button with pill shape and shadow -->
-            <button onclick="window.print()" class="btn btn-outline-primary rounded-pill px-4 fw-semibold shadow-sm d-print-none">
-                <i class="bi bi-printer me-2"></i> Print Guide
+            <button onclick="downloadPDF()" class="btn btn-outline-primary rounded-pill px-4 fw-semibold shadow-sm d-print-none">
+                <i class="bi bi-file-earmark-pdf me-2"></i> Download PDF
             </button>
         }
     </div>
@@ -26,42 +27,61 @@
     }
     else
     {
-        <div class="row g-4">
-            @foreach (var candidate in Model)
-            {
-                <div class="col-md-6 col-lg-4" id="candidate-card-@candidate.CandidateId">
-                    <div class="card h-100 shadow-sm border-0 rounded-3">
-                        <div class="row g-0 h-100">
-                            <div class="col-4">
-                                @if (!string.IsNullOrEmpty(candidate.PhotoUrl))
-                                {
-                                    <img src="@candidate.PhotoUrl" class="img-fluid rounded-start h-100" alt="@candidate.Name" style="object-fit: cover;">
-                                }
-                                else
-                                {
-                                    <div class="bg-secondary h-100 d-flex align-items-center justify-content-center rounded-start">
-                                        <span class="text-white small">No Photo</span>
-                                    </div>
-                                }
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body d-flex flex-column h-100">
-                                    <h5 class="card-title fw-bold mb-1">@candidate.Name</h5>
-                                    <h6 class="card-subtitle mb-2 text-primary">@candidate.Position?.Name</h6>
-                                    <span class="badge bg-dark mb-2 align-self-start">@candidate.Municipality?.Name</span>
-                                    
-                                    <div class="mt-auto d-print-none">
-                                        <!-- Modernized remove button with icon, pill shape, and bold text -->
-                                        <button onclick="removeCandidate(@candidate.CandidateId)" class="btn btn-sm btn-light text-danger border rounded-pill w-100 fw-bold shadow-sm">
-                                            <i class="bi bi-trash3 me-1"></i> Remove
-                                        </button>
+        <!-- Wrap the exportable content in a targetable div -->
+        <div id="pdf-content">
+            
+            <!-- This header is hidden on the webpage, but shown in the PDF -->
+            <div id="pdf-header" style="display: none; margin-bottom: 20px;">
+                <h2 style="color: #1e2c49; font-weight: bold;">My Ballot Guide</h2>
+                <p>Generated on @DateTime.Now.ToString("MMMM dd, yyyy")</p>
+                <hr />
+            </div>
+
+            <div class="row g-4">
+                @foreach (var candidate in Model)
+                {
+                    <div class="col-md-6 col-lg-4" id="candidate-card-@candidate.CandidateId">
+                        <div class="card h-100 shadow-sm border-0 rounded-3">
+                            <div class="row g-0 h-100">
+                                
+                                <!-- Added pdf-hide to this column so the image is stripped from the PDF -->
+                                <div class="col-4 pdf-hide d-print-none">
+                                    @if (!string.IsNullOrEmpty(candidate.PhotoUrl))
+                                    {
+                                        <img src="@candidate.PhotoUrl" class="img-fluid rounded-start h-100" alt="@candidate.Name" style="object-fit: cover;">
+                                    }
+                                    else
+                                    {
+                                        <div class="bg-secondary h-100 d-flex align-items-center justify-content-center rounded-start">
+                                            <span class="text-white small">No Photo</span>
+                                        </div>
+                                    }
+                                </div>
+                                
+                                <!-- Added an id to the text column so we can resize it during PDF generation -->
+                                <div class="col-8" id="text-col-@candidate.CandidateId">
+                                    <div class="card-body d-flex flex-column h-100">
+                                        <h5 class="card-title fw-bold mb-1">@candidate.Name</h5>
+                                        <h6 class="card-subtitle mb-2 text-primary">@candidate.Position?.Name</h6>
+                                        <span class="badge bg-dark mb-2 align-self-start">@candidate.Municipality?.Name</span>
+                                        
+                                        <!-- Removed the -webkit-line-clamp styles so the full biography is always visible -->
+                                        <p class="card-text small text-muted mt-2 mb-3">
+                                            @candidate.Biography
+                                        </p>
+                                        
+                                        <div class="mt-auto pdf-hide d-print-none">
+                                            <button onclick="removeCandidate(@candidate.CandidateId)" class="btn btn-sm btn-light text-danger border rounded-pill w-100 fw-bold shadow-sm">
+                                                <i class="bi bi-trash3 me-1"></i> Remove
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            }
+                }
+            </div>
         </div>
     }
 </div>
@@ -75,21 +95,57 @@
                     if (!data.isSaved) {
                         const card = document.getElementById(`candidate-card-${id}`);
                         
-                        // Apply fade-out and slight shrink animation
                         card.style.transition = "opacity 0.3s ease, transform 0.3s ease";
                         card.style.opacity = "0";
                         card.style.transform = "scale(0.95)";
                         
-                        // Wait for animation to finish before removing from DOM
                         setTimeout(() => {
                             card.remove();
                             if (document.querySelectorAll('[id^="candidate-card-"]').length === 0) {
-                                location.reload(); // Reload to show the empty state message
+                                location.reload(); 
                             }
                         }, 300);
                     }
                 })
                 .catch(err => console.error('Error removing candidate:', err));
+        }
+
+        function downloadPDF() {
+            const element = document.getElementById('pdf-content');
+            const header = document.getElementById('pdf-header');
+            
+            // Get the elements that need to be hidden/modified
+            const hideElements = document.querySelectorAll('.pdf-hide');
+            const textColumns = document.querySelectorAll('[id^="text-col-"]');
+
+            // Show header, hide images/buttons, and expand the text to full width (col-12)
+            header.style.display = 'block';
+            hideElements.forEach(el => el.style.display = 'none');
+            textColumns.forEach(col => {
+                col.classList.remove('col-8');
+                col.classList.add('col-12');
+            });
+
+            // Configure the PDF output
+            const opt = {
+                margin:       0.5,
+                filename:     'My_Ballot_Guide.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Generate the file, then instantly restore the UI to normal
+            html2pdf().set(opt).from(element).save().then(() => {
+                header.style.display = 'none';
+                hideElements.forEach(el => el.style.display = 'block');
+                
+                // Revert text columns back to their original size next to the image
+                textColumns.forEach(col => {
+                    col.classList.remove('col-12');
+                    col.classList.add('col-8');
+                });
+            });
         }
     </script>
 }
