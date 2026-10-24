@@ -52,23 +52,63 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody] LoginDto loginDto)
+    public async Task<IActionResult> Register(
+        [FromBody] RegisterDto request)
     {
-        var userExists = await _userManager.FindByEmailAsync(loginDto.Email);
-        if (userExists != null)
-            return StatusCode(StatusCodes.Status500InternalServerError, "User already exists!");
+        var name = request.Name.Trim();
+        var email = request.Email.Trim();
 
-        var user = new IdentityUser()
+        if (name.Length < 2)
         {
-            Email = loginDto.Email,
-            SecurityStamp = Guid.NewGuid().ToString(),
-            UserName = loginDto.Email
-        };
-        var result = await _userManager.CreateAsync(user, loginDto.Password);
-        
-        if (!result.Succeeded)
-            return StatusCode(StatusCodes.Status500InternalServerError, "User creation failed! Please check user details and try again.");
+            return BadRequest(
+                "Name must contain at least 2 characters.");
+        }
 
-        return Ok("User created successfully!");
+        var existingUser =
+            await _userManager.FindByEmailAsync(email);
+
+        if (existingUser != null)
+        {
+            return Conflict(
+                "An account with this email already exists.");
+        }
+
+        var user = new IdentityUser
+        {
+            Email = email,
+            UserName = email,
+            SecurityStamp = Guid.NewGuid().ToString()
+        };
+
+        var result = await _userManager.CreateAsync(
+            user,
+            request.Password);
+
+        if (!result.Succeeded)
+        {
+            var errors = string.Join(
+                " ",
+                result.Errors.Select(error => error.Description));
+
+            return BadRequest(errors);
+        }
+
+        var nameResult = await _userManager.AddClaimAsync(
+            user,
+            new Claim("fullName", name));
+
+        if (!nameResult.Succeeded)
+        {
+            await _userManager.DeleteAsync(user);
+
+            return StatusCode(
+                500,
+                "Could not save the account name.");
+        }
+
+        return Ok(new
+        {
+            message = "Account created successfully."
+        });
     }
 }
